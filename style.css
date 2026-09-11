@@ -383,24 +383,10 @@ nav a.active::after {
 }
 
 
-/* =========================
-   CONTACT FORM
-========================= */
-
 .contact-form {
-    flex: 1;
-
-    background-color: #FFFFFF;
-
-    padding: 35px;
-
-    border: 1px solid #E5E7EB;
-
-    border-radius: 12px;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    flex: 0 1 500px;
+    max-width: 500px;
 }
-
 .form-group {
     display: flex;
     flex-direction: column;
