@@ -1,12 +1,6 @@
-/* =========================
-   NAVIGATION & SECTIONS
-========================= */
-
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
-
-/* Active Navigation */
 
 function updateActiveNav() {
 
@@ -40,10 +34,6 @@ function updateActiveNav() {
 }
 
 
-/* =========================
-   SECTION ANIMATION
-========================= */
-
 const observer = new IntersectionObserver(
 
     entries => {
@@ -70,9 +60,6 @@ const observer = new IntersectionObserver(
 
 );
 
-
-/* Observe Each Section */
-
 sections.forEach(section => {
 
     observer.observe(section);
@@ -80,17 +67,11 @@ sections.forEach(section => {
 });
 
 
-/* Update Navigation While Scrolling */
 
 window.addEventListener("scroll", updateActiveNav);
 
 window.addEventListener("load", updateActiveNav);
 
-
-
-/* =========================
-   CHATBOT
-========================= */
 
 const chatbot = document.querySelector(".chatbot");
 
@@ -107,11 +88,6 @@ const chatbotSend = document.getElementById("chatbot-send");
 const chatbotMessages = document.getElementById("chatbot-messages");
 
 
-
-/* =========================
-   OPEN CHATBOT
-========================= */
-
 chatbotToggle.addEventListener("click", () => {
 
     chatbotBox.style.display = "flex";
@@ -121,22 +97,12 @@ chatbotToggle.addEventListener("click", () => {
 });
 
 
-
-/* =========================
-   CLOSE CHATBOT
-========================= */
-
 chatbotClose.addEventListener("click", () => {
 
     chatbotBox.style.display = "none";
 
 });
 
-
-
-/* =========================
-   CLOSE WHEN CLICKING OUTSIDE
-========================= */
 
 document.addEventListener("click", event => {
 
@@ -154,11 +120,6 @@ document.addEventListener("click", event => {
 
 });
 
-
-
-/* =========================
-   KEEP SCROLLING INSIDE CHATBOT
-========================= */
 
 chatbotMessages.addEventListener(
     "wheel",
@@ -213,11 +174,6 @@ chatbotMessages.addEventListener(
 
 );
 
-
-
-/* =========================
-   CREATE QUICK OPTIONS
-========================= */
 
 function createQuickOptions() {
 
@@ -301,27 +257,18 @@ function createQuickOptions() {
 }
 
 
-
-/* =========================
-   SEND MESSAGE
-========================= */
-
 function sendMessage() {
 
     const message =
         chatbotInput.value.trim();
 
 
-    /* Don't Send Empty Messages */
 
     if (message === "") {
 
         return;
 
     }
-
-
-    /* Create User Message */
 
     const userMessage =
         document.createElement("div");
@@ -337,19 +284,11 @@ function sendMessage() {
         userMessage
     );
 
-
-    /* Clear Input */
-
     chatbotInput.value = "";
 
 
-    /* Scroll Down */
-
     chatbotMessages.scrollTop =
         chatbotMessages.scrollHeight;
-
-
-    /* Bot Reply */
 
     setTimeout(() => {
 
@@ -367,9 +306,6 @@ function sendMessage() {
             botMessage
         );
 
-
-        /* Show Quick Options Again */
-
         const newOptions =
             createQuickOptions();
 
@@ -377,8 +313,6 @@ function sendMessage() {
             newOptions
         );
 
-
-        /* Scroll to Latest Response */
 
         chatbotMessages.scrollTop =
             chatbotMessages.scrollHeight;
@@ -388,21 +322,11 @@ function sendMessage() {
 }
 
 
-
-/* =========================
-   SEND BUTTON
-========================= */
-
 chatbotSend.addEventListener(
     "click",
     sendMessage
 );
 
-
-
-/* =========================
-   ENTER KEY
-========================= */
 
 chatbotInput.addEventListener(
     "keydown",
@@ -418,12 +342,6 @@ chatbotInput.addEventListener(
 
     }
 );
-
-
-
-/* =========================
-   ORIGINAL QUICK OPTIONS
-========================= */
 
 const originalChatOptions =
     document.querySelectorAll(
@@ -446,23 +364,12 @@ originalChatOptions.forEach(option => {
 
 });
 
-
-
-/* =========================
-   CHATBOT RESPONSES
-========================= */
-
 function getBotResponse(message) {
 
     const text = message
         .toLowerCase()
         .replace(/[?.!,]/g, "");
 
-
-
-    /* =========================
-       GREETINGS
-    ========================= */
 
     if (
         text.includes("hello") ||
@@ -473,12 +380,6 @@ function getBotResponse(message) {
         return "Hi! 👋 I'm Mbasa's portfolio assistant. You can ask me about her projects, skills, experience or contact information.";
 
     }
-
-
-
-    /* =========================
-       SENTIMENTIQ
-    ========================= */
 
     if (
         text.includes("sentimentiq") ||
@@ -491,10 +392,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       TAXGUARD
-    ========================= */
-
     if (
         text.includes("taxguard") ||
         text.includes("tax guard")
@@ -504,11 +401,6 @@ function getBotResponse(message) {
 
     }
 
-
-
-    /* =========================
-       SMALLBIZ
-    ========================= */
 
     if (
         text.includes("smallbiz") ||
@@ -521,9 +413,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       PROJECTS
-    ========================= */
 
     if (
         text.includes("project") ||
@@ -535,11 +424,6 @@ function getBotResponse(message) {
 
     }
 
-
-
-    /* =========================
-       WEB DEVELOPMENT
-    ========================= */
 
     if (
         text.includes("html") ||
@@ -554,10 +438,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       PROGRAMMING
-    ========================= */
-
     if (
         text.includes("java") ||
         text.includes("python") ||
@@ -570,11 +450,6 @@ function getBotResponse(message) {
 
     }
 
-
-
-    /* =========================
-       TOOLS
-    ========================= */
 
     if (
         text.includes("github") ||
@@ -590,11 +465,6 @@ function getBotResponse(message) {
     }
 
 
-
-    /* =========================
-       SKILLS
-    ========================= */
-
     if (
         text.includes("skill") ||
         text.includes("technology") ||
@@ -606,11 +476,6 @@ function getBotResponse(message) {
 
     }
 
-
-
-    /* =========================
-       CAPACITI
-    ========================= */
 
     if (
         text.includes("capaciti") ||
@@ -625,10 +490,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       TUTOR EXPERIENCE
-    ========================= */
-
     if (
         text.includes("tutor") ||
         text.includes("tutoring")
@@ -637,12 +498,6 @@ function getBotResponse(message) {
         return "Mbasa worked as a Tutor at Walter Sisulu University from May to December 2024, supporting first-year students with programming and web development concepts.";
 
     }
-
-
-
-    /* =========================
-       STUDENT ASSISTANT
-    ========================= */
 
     if (
         text.includes("student assistant")
@@ -654,9 +509,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       EXPERIENCE
-    ========================= */
 
     if (
         text.includes("experience") ||
@@ -670,9 +522,7 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       ABOUT
-    ========================= */
+  
 
     if (
         text.includes("about") ||
@@ -686,9 +536,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       ROLE
-    ========================= */
 
     if (
         text.includes("software engineer") ||
@@ -702,10 +549,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       LOCATION
-    ========================= */
-
     if (
         text.includes("location") ||
         text.includes("where is mbasa") ||
@@ -718,10 +561,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       EMAIL
-    ========================= */
-
     if (
         text.includes("email")
     ) {
@@ -730,11 +569,6 @@ function getBotResponse(message) {
 
     }
 
-
-
-    /* =========================
-       CONTACT
-    ========================= */
 
     if (
         text.includes("contact") ||
@@ -748,9 +582,6 @@ function getBotResponse(message) {
 
 
 
-    /* =========================
-       THANK YOU
-    ========================= */
 
     if (
         text.includes("thank") ||
@@ -762,10 +593,6 @@ function getBotResponse(message) {
     }
 
 
-
-    /* =========================
-       DEFAULT RESPONSE
-    ========================= */
 
     return "I don't have information about that yet. Try asking me about Mbasa's projects, skills, experience, current role or contact information.";
 
